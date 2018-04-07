@@ -8,8 +8,10 @@ const fungus = new Fungus({
     lotionUrl: 'localhost:3000' // Ensure lotion is running on port 3000
 })
 
-// Get a private key
-fungus.generatePrivateKey();
+let wallet = {};
+wallet.privateKey = fungus.generatePrivateKey().toString('hex');
+wallet.address = fungus.createWallet(wallet.privateKey).toString('hex');
+
 ```
 
 ## API
