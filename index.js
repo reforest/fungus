@@ -114,11 +114,11 @@ class Fungus {
         return privKey;
     }
 
-    createWallet(privateKey) {
+    createPublicKey(privateKey) {
         return generateAddress(privateKey);
     }
 
-    getWallet(address) {
+    getBalance(address) {
         return getBalance(this.lotionUrl, address);
     }
 
