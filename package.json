@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-watch index.js",
+    "example": "babel-watch examples/interfaceWithLotion.js",
     "build": "babel index.js -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,11 +23,13 @@
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.4",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.6.1",
     "babel-watch": "2.0.7"
   },
   "dependencies": {
     "axios": "0.18.0",
+    "babel-runtime": "6.26.0",
     "crypto": "1.0.1",
     "secp256k1": "3.5.0",
     "sha.js": "2.4.11",
