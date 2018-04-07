@@ -9,7 +9,7 @@ const fungus = new Fungus({
 })
 
 const privateKey = fungus.generatePrivateKey().toString('hex');
-const address = fungus.createWallet(privateKey).toString('hex');
+const address = fungus.createPublicKey(privateKey).toString('hex');
 const balance = fungus.getBalance(address).toString('hex');
 
 // save it savely somewhere, for example(bad)
