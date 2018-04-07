@@ -114,8 +114,8 @@ class Fungus {
         return privKey;
     }
 
-    createWallet(publicKey) {
-        return generateAddress(publicKey);
+    createWallet(privateKey) {
+        return generateAddress(privateKey);
     }
 
     getWallet(address) {
