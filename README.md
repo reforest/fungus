@@ -3,7 +3,7 @@ Client-side JavaScript SDK to read/write wallets and transactions to Basecoin
 
 ## Usage
 ```javascript
-import Fungus from 'fungus';
+import Fungus from 'reforest-fungus';
 const fungus = new Fungus({
     lotionUrl: 'localhost:3000' // Ensure lotion is running on port 3000
 })
