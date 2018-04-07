@@ -8,14 +8,14 @@ const fungus = new Fungus({
     lotionUrl: 'localhost:3000' // Ensure lotion is running on port 3000
 })
 
-const privateKey = fungus.generatePrivateKey().toString('hex');
-
-// save it savely somewhere
+// save it savely somewhere, for example(bad)
 localStorage.setItem('privateKey', privateKey);
 
-const publicKey = fungus.createPublicKey(privateKey).toString('hex'); // address
-
-const balance = fungus.getBalance(address);
+let wallet = {
+    address: fungus.createPublicKey(privateKey).toString('hex'), // address
+    balance: fungus.getBalance(address),
+    privateKey: fungus.generatePrivateKey().toString('hex')
+}
 
 ```
 
