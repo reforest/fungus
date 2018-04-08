@@ -30,11 +30,13 @@ async function getBalance(lotionUrl, address) {
 
 async function send(lotionUrl, privKey, obj) {
     let txx = {
-        amount: obj.amount,
-        from: generateAddress(privKey),
-        to: obj.address,
-        org: obj.org,
-        feePortion: obj.feePortion
+        data: {
+            amount: obj.amount,
+            from: generateAddress(privKey),
+            to: obj.address,
+            org: obj.org,
+            feePortion: obj.feePortion
+        }
     };
 
     let tx = signTx(privKey, txx);
