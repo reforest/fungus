@@ -8,8 +8,7 @@ let TxStruct = vstruct([
     { name: 'amount', type: vstruct.UInt64BE },
     { name: 'senderPubKey', type: vstruct.Buffer(33) },
     { name: 'senderAddress', type: vstruct.Buffer(32) },
-    { name: 'receiverAddress', type: vstruct.Buffer(32) },
-    { name: 'nonce', type: vstruct.UInt32BE }
+    { name: 'receiverAddress', type: vstruct.Buffer(32) }
 ]);
 
 // Needed for send
@@ -62,17 +61,15 @@ function generateAddress(publicKey) {
 }
 
 async function getBalance(lotionUrl, address) {
-    let state = await axios.get(lotionUrl + '/state').then(res => res.data);
-    return state.balances[address] || 0;
+    let { data } = await axios.get(lotionUrl + '/state');
+    return data.balances[address] || 0;
 }
 
 async function send(lotionUrl, privKey, { address, amount }) {
-    let senderPubKey = generatePublicKey(lotionUrl, privKey);
-    let senderAddress = generateAddress(lotionUrl, senderPubKey);
+    let senderPubKey = generatePublicKey(privKey);
+    let senderAddress = generateAddress(senderPubKey);
 
-    let currentState = await axios.get(lotionUrl + '/state').then(res => res.data);
-
-    let nonce = currentState.nonces[senderAddress.toString('hex')] || 0;
+    let { data } = await axios.get(lotionUrl + '/state');
 
     let receiverAddress;
     if (typeof address === 'string') {
@@ -84,8 +81,7 @@ async function send(lotionUrl, privKey, { address, amount }) {
         amount,
         senderPubKey,
         senderAddress,
-        receiverAddress,
-        nonce
+        receiverAddress
     };
 
     let signedTx = signTx(privKey, tx);
@@ -111,6 +107,17 @@ class Fungus {
             privKey = randomBytes(32);
         } while (!secp256k1.privateKeyVerify(privKey));
 
+        return privKey;
+    }
+
+    generateStaticPrivateKey(num=1) {
+        // for demo
+        if(typeof num !== 'number') return '';
+        let privKey;
+        do {
+            privKey = Buffer.alloc(32);
+            for(let i = 0; i < privKey.length; i++) privKey[i] = num
+        } while (!secp256k1.privateKeyVerify(privKey));
         return privKey;
     }
 

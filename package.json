@@ -7,7 +7,7 @@
     "start": "babel-watch index.js",
     "example": "babel-watch examples/interfaceWithLotion.js",
     "build": "babel index.js -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "babel-watch test.js"
   },
   "repository": {
     "type": "git",
