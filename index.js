@@ -28,11 +28,13 @@ async function getBalance(lotionUrl, address) {
     return data.balances[address] || 0;
 }
 
-async function send(lotionUrl, privKey, { address, amount }) {
+async function send(lotionUrl, privKey, obj) {
     let txx = {
-        amount,
+        amount: obj.amount,
         from: generateAddress(privKey),
-        to: address
+        to: obj.address,
+        org: obj.org,
+        feePortion: obj.feePortion
     };
 
     let tx = signTx(privKey, txx);
@@ -79,8 +81,8 @@ class Fungus {
         return getBalance(this.lotionUrl, address);
     }
 
-    createTransaction(privKey, { address, amount }) {
-        return send(this.lotionUrl, privKey, { address, amount });
+    createTransaction(privKey, obj) {
+        return send(this.lotionUrl, privKey, obj);
     }
 
     getAllTransactions() {
