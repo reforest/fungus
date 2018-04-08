@@ -45,7 +45,7 @@ async function send(lotionUrl, privKey, obj) {
 }
 
 async function getTransactions(lotionUrl) {
-    let result = await axios.get(lotionUrl + '/txs');
+    let result = await axios.get(lotionUrl + '/state');
     return result.data;
 }
 
