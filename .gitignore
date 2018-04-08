@@ -60,3 +60,5 @@ typings/
 
 .idea
 dist/
+
+.orig
