@@ -7,7 +7,8 @@
     "start": "babel-watch index.js",
     "example": "babel-watch examples/interfaceWithLotion.js",
     "build": "babel index.js -d dist",
-    "test": "babel-watch test.js"
+    "test": "babel-watch test.js",
+    "release": "git pull && npm run test && git add . && npm run build && git commit -m 'deploy' && git push origin master && npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
