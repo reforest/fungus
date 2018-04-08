@@ -7,7 +7,8 @@
     "start": "babel-watch index.js",
     "example": "babel-watch examples/interfaceWithLotion.js",
     "build": "babel index.js -d dist",
-    "test": "babel-watch test.js",
+    "test:dev": "babel-watch test.js",
+    "test": "jest --watchAll",
     "release": "git pull && npm run test && git add . && npm run build && git commit -m 'deploy' && git push origin master && npm version patch && npm publish"
   },
   "repository": {
@@ -19,6 +20,9 @@
   "bugs": {
     "url": "https://github.com/reforest/fungus/issues"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "homepage": "https://github.com/reforest/fungus#readme",
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -26,12 +30,14 @@
     "babel-loader": "7.1.4",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.6.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-watch": "2.0.7"
   },
   "dependencies": {
     "axios": "0.18.0",
     "babel-runtime": "6.26.0",
     "crypto": "1.0.1",
+    "jest": "^22.4.3",
     "secp256k1": "3.5.0",
     "sha.js": "2.4.11",
     "varstruct": "6.1.2"
