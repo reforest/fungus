@@ -1,6 +1,6 @@
 {
   "name": "reforest-fungus",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Client-side JavaScript SDK to read/write wallets and transactions to Basecoin",
   "main": "dist/index.js",
   "scripts": {
