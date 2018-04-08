@@ -10,12 +10,17 @@ const fungus = new Fungus({
 
 const privateKey = fungus.generatePrivateKey().toString('hex');
 const address = fungus.createPublicKey(privateKey).toString('hex');
-const balance = fungus.getBalance(address);
+let balance; 
+
+fungus.getBalance(address).then(b=>{
+    balance = b;
+    console.log(balance);
+}).catch(err=>{
+    console.error(err);
+})
 
 // save it savely somewhere, for example(bad)
 localStorage.setItem('privateKey', privateKey);
-
-console.log({ privateKey, address, balance });
 
 ```
 
