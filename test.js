@@ -7,7 +7,7 @@ function user(n){
   return new Promise((resolve, reject)=>{
     const temWalletObj = {};
     temWalletObj.privateKey = fungus.generateStaticPrivateKey(n);
-    temWalletObj.address = fungus.createPublicKey(temWalletObj.privateKey).toString('hex');
+    temWalletObj.address = fungus.generateAddress(temWalletObj.privateKey);
     fungus.getBalance(temWalletObj.address).then(b=>{
       temWalletObj.balance = b;
       resolve(temWalletObj)
@@ -21,6 +21,7 @@ function user(n){
 let userOne, userTwo;
 user(1).then(w=>{
   userOne=w
+  console.log(userOne);
   user(2).then(w=>{
     userTwo=w
     fungus.createTransaction(
@@ -28,7 +29,7 @@ user(1).then(w=>{
       address: userTwo.address,
       amount: 5
     }).then(good=>{
-      console.log(good);
+      // console.log('good', good);
     })
     .catch(err=>{
       console.error(err);
