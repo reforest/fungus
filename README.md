@@ -1,7 +1,9 @@
 # fungus
+
 Client-side JavaScript SDK to read/write wallets and transactions to Basecoin
 
 ## Usage
+
 ```javascript
 import Fungus from 'reforest-fungus';
 const fungus = new Fungus({
@@ -25,6 +27,7 @@ localStorage.setItem('privateKey', privateKey);
 ```
 
 ## API
+
 * generatePrivateKey
 * createPublicKey
 * getBalance
@@ -32,6 +35,7 @@ localStorage.setItem('privateKey', privateKey);
 * getAllTransactions
 
 ## Running example
+
 ```bash
 npm run example
 ```
