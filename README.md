@@ -2,6 +2,8 @@
 
 Client-side JavaScript SDK to read/write wallets and transactions to Basecoin
 
+![Stack Diagram](https://github.com/reforest/fungus/blob/master/images/Screen%20Shot%202018-04-08%20at%207.58.34%20PM.png?raw=true)
+
 ## Usage
 
 ```javascript
