@@ -31,9 +31,9 @@ describe('Fungus', () => {
         fungus.createTransaction(
           userOne.privateKey, {
           address: userTwo.address,
-          amount: 5,
-          feePortion: 0.015,
-          org: 'celadon_wallet'
+          amount: 10,
+          feePortion: 0.50,
+          org: ['celadon_wallet', 'impacthub_wallet']
         }).then(good=>{
           expect(good.result).not.toBeNull()
           done()
