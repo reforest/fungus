@@ -29,18 +29,18 @@ async function getBalance(lotionUrl, address) {
 }
 
 async function send(lotionUrl, privKey, obj) {
+    console.log(obj)
     let txx = {
-        data: {
-            amount: obj.amount,
-            from: generateAddress(privKey),
-            to: obj.address,
-            org: obj.org,
-            feePortion: obj.feePortion
-        }
+        amount: obj.amount,
+        from: generateAddress(privKey),
+        to: obj.address,
+        org: obj.org,
+        feePortion: obj.feePortion
     };
 
     let tx = signTx(privKey, txx);
     let result = await axios.post(lotionUrl + '/txs', tx);
+    console.log(result.data)
     return result.data;
 }
 

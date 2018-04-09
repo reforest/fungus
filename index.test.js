@@ -25,12 +25,15 @@ describe('Fungus', () => {
   it('can createTransaction', (done) => {
     user(1).then(w=>{
       userOne=w
+      console.log(userOne.address.toString('hex'))
       user(2).then(w=>{
         userTwo=w
         fungus.createTransaction(
           userOne.privateKey, {
           address: userTwo.address,
-          amount: 5
+          amount: 5,
+          feePortion: 0.015,
+          org: 'celadon_wallet'
         }).then(good=>{
           expect(good.result).not.toBeNull()
           done()
